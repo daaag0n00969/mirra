@@ -11,6 +11,7 @@
     <string name="open">Open</string>
     <string name="ready">Ready</string>
     <string name="optional">Optional</string>
+    <string name="recommended">Recommended</string>
     <string name="start_mirror">Start mirror</string>
     <string name="start_hint">In the system sheet choose a single app (not Entire screen), then open the player. Use the floating button to hide or show the mirrored overlay.</string>
     <string name="need_overlay">Allow Mirra to display over other apps first.</string>
@@ -30,7 +31,8 @@
     <string name="perm_notifications">Notifications</string>
     <string name="perm_notifications_desc">Shows a persistent control to hide, show, or stop the mirror.</string>
     <string name="perm_a11y">Accessibility (Mirra)</string>
-    <string name="perm_a11y_desc">Full-opacity pass-through on Android 12+ and optional remapped taps on the flipped picture.</string>
+    <string name="perm_a11y_desc">Recommended. Lets the overlay be fully opaque (no ghost of the original picture) while taps still reach the player.</string>
+    <string name="a11y_recommended">Turn on Mirra in Accessibility so the flipped picture fully covers the original. Without it Android may show both images at once, or block pass-through taps.</string>
     <string name="a11y_label">Mirra overlay</string>
     <string name="a11y_description">Lets Mirra draw a trusted HUD overlay so the mirrored picture does not swallow player taps. Can also inject remapped gestures when “Mirrored taps” is enabled. Mirra does not read your screen content or type text.</string>
     <string name="notification_channel">Mirror session</string>
@@ -62,10 +64,10 @@
     <string name="setting_bubble_desc">Draggable button over other apps. Tap to hide/show, long-press for actions.</string>
     <string name="setting_keep_on">Keep screen on</string>
     <string name="setting_keep_on_desc">Prevents sleep while the overlay is visible.</string>
-    <string name="setting_opacity">Overlay opacity: %1$d%%</string>
+    <string name="setting_opacity">Picture brightness: %1$d%%</string>
     <string name="setting_delay">Start delay: %1$d s</string>
     <string name="help_1_title">1. Permissions</string>
-    <string name="help_1_body">Grant overlay permission. Notifications are optional. Accessibility is optional but recommended: without it Android 12+ may dim the overlay so taps can pass through.</string>
+    <string name="help_1_body">Grant overlay permission. Notifications are optional. Accessibility is strongly recommended: it lets Mirra draw a fully opaque flipped picture that still passes taps. Without it Android may either ghost the original app underneath or block pass-through taps.</string>
     <string name="help_2_title">2. Start a session</string>
     <string name="help_2_body">Tap Start mirror. In the system dialog choose a single app — never Entire screen, or the overlay will film itself. Then open the player, maps, or whatever you want on the HUD.</string>
     <string name="help_3_title">3. Floating button</string>

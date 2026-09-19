@@ -11,6 +11,7 @@
     <string name="open">Открыть</string>
     <string name="ready">Готово</string>
     <string name="optional">Необязательно</string>
+    <string name="recommended">Рекомендуется</string>
     <string name="start_mirror">Запустить зеркало</string>
     <string name="start_hint">В системном окне выберите одно приложение (не весь экран), затем откройте плеер. Плавающей кнопкой скрывайте и возвращайте отзеркаленную картинку.</string>
     <string name="need_overlay">Сначала разрешите показ поверх других окон.</string>
@@ -30,7 +31,8 @@
     <string name="perm_notifications">Уведомления</string>
     <string name="perm_notifications_desc">Постоянное уведомление: скрыть, показать или остановить зеркало.</string>
     <string name="perm_a11y">Спец. возможности (Mirra)</string>
-    <string name="perm_a11y_desc">Полная непрозрачность с проходом нажатий на Android 12+ и опциональные зеркальные тапы.</string>
+    <string name="perm_a11y_desc">Рекомендуется. Оверлей будет полностью непрозрачным (без «двоения» с оригиналом), а нажатия всё равно дойдут до плеера.</string>
+    <string name="a11y_recommended">Включите Mirra в спец. возможностях, чтобы отзеркаленная картинка полностью закрывала оригинал. Иначе Android может показать оба изображения сразу или заблокировать нажатия насквозь.</string>
     <string name="a11y_label">Оверлей Mirra</string>
     <string name="a11y_description">Позволяет Mirra рисовать доверенный HUD-оверлей, который не перехватывает нажатия плеера. При включённых «зеркальных нажатиях» может отправлять преобразованные жесты. Mirra не читает содержимое экрана и не вводит текст.</string>
     <string name="notification_channel">Сессия зеркала</string>
@@ -62,10 +64,10 @@
     <string name="setting_bubble_desc">Перетаскивается поверх приложений. Нажатие — скрыть/показать, удержание — меню.</string>
     <string name="setting_keep_on">Не гасить экран</string>
     <string name="setting_keep_on_desc">Пока оверлей виден, экран не засыпает.</string>
-    <string name="setting_opacity">Прозрачность оверлея: %1$d%%</string>
+    <string name="setting_opacity">Яркость картинки: %1$d%%</string>
     <string name="setting_delay">Задержка старта: %1$d с</string>
     <string name="help_1_title">1. Разрешения</string>
-    <string name="help_1_body">Выдайте показ поверх окон. Уведомления необязательны. Спец. возможности желательны: без них Android 12+ может приглушить оверлей, чтобы пропустить нажатия.</string>
+    <string name="help_1_body">Выдайте показ поверх окон. Уведомления необязательны. Спец. возможности очень желательны: тогда отзеркаленная картинка полностью закрывает оригинал, а нажатия всё равно проходят. Без них Android либо «двоит» изображение, либо блокирует нажатия насквозь.</string>
     <string name="help_2_title">2. Запуск</string>
     <string name="help_2_body">Нажмите «Запустить зеркало». В системном окне выберите одно приложение — не весь экран, иначе оверлей снимет сам себя. Затем откройте плеер, карты или другое HUD-приложение.</string>
     <string name="help_3_title">3. Плавающая кнопка</string>

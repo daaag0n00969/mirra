@@ -1,9 +1,9 @@
 package dev.dag0n.mirra.mirror
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.SurfaceTexture
-import android.os.Build
 import android.view.Gravity
 import android.view.Surface
 import android.view.TextureView
@@ -39,6 +39,7 @@ class OverlayController(
         if (root != null) return
         val tv = TextureView(hostContext).apply {
             isOpaque = true
+            setBackgroundColor(Color.BLACK)
             surfaceTextureListener = object : TextureView.SurfaceTextureListener {
                 override fun onSurfaceTextureAvailable(st: SurfaceTexture, width: Int, height: Int) {
                     capture.bindSurface(Surface(st), width.coerceAtLeast(1), height.coerceAtLeast(1))
@@ -60,6 +61,9 @@ class OverlayController(
         }
         textureView = tv
         val frame = FrameLayout(hostContext).apply {
+            // Solid black so the real (unflipped) app never shows through
+            // TextureView holes, transforms, or window blending.
+            setBackgroundColor(Color.BLACK)
             addView(
                 tv,
                 FrameLayout.LayoutParams(
@@ -147,6 +151,8 @@ class OverlayController(
         tv.scaleX = if (settings.flipHorizontal) -1f else 1f
         tv.scaleY = if (settings.flipVertical) -1f else 1f
         tv.rotation = if (settings.rotate180) 180f else 0f
+        // Fade the picture toward black, never toward the unflipped app underneath.
+        tv.alpha = (settings.overlayOpacityPercent / 100f).coerceIn(0.2f, 1f)
         if (settings.cropSystemBars && tv.width > 0 && tv.height > 0) {
             val w = tv.width.toFloat()
             val h = tv.height.toFloat()
@@ -179,12 +185,14 @@ class OverlayController(
         if (settings.keepScreenOn) {
             flags = flags or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
         }
-        val opacity = settings.overlayOpacityPercent / 100f
-        val alpha = when {
-            remap -> opacity.coerceIn(0.2f, 1f)
-            passThrough && !a11y -> opacity.coerceIn(0.2f, maxPassThroughAlpha())
-            else -> opacity.coerceIn(0.2f, 1f)
-        }
+        // Window alpha stays at 1 so the compositor does not blend in the
+        // unflipped app (that was the "double image" bug). User opacity is
+        // applied to the TextureView over a black backdrop instead.
+        //
+        // FLAG_NOT_TOUCHABLE + alpha 1.0 is allowed for TYPE_ACCESSIBILITY_OVERLAY
+        // (trusted). For a normal overlay Android 12+ may drop pass-through taps;
+        // the floating bubble still works, and enabling Accessibility restores
+        // full tap-through on an opaque picture.
         return WindowManager.LayoutParams(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
@@ -193,17 +201,9 @@ class OverlayController(
             PixelFormat.TRANSLUCENT,
         ).apply {
             gravity = Gravity.TOP or Gravity.START
-            this.alpha = alpha
+            this.alpha = 1f
             layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
         }
-    }
-
-    private fun maxPassThroughAlpha(): Float {
-        if (Build.VERSION.SDK_INT < 31) return 1f
-        return runCatching {
-            val im = serviceContext.getSystemService(android.hardware.input.InputManager::class.java)
-            im.maximumObscuringOpacityForTouch
-        }.getOrDefault(0.8f)
     }
 }

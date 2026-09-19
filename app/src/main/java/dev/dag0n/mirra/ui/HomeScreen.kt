@@ -127,11 +127,19 @@ fun HomeScreen(
             title = stringResource(R.string.perm_a11y),
             body = stringResource(R.string.perm_a11y_desc),
             ready = a11yEnabled,
-            optional = true,
             icon = Icons.Outlined.AccessibilityNew,
             action = stringResource(R.string.open),
             onAction = onOpenA11ySettings,
         )
+        if (!a11yEnabled) {
+            Text(
+                text = stringResource(R.string.a11y_recommended),
+                color = Muted,
+                fontSize = 13.sp,
+                lineHeight = 18.sp,
+                modifier = Modifier.padding(top = 8.dp, start = 4.dp, end = 4.dp),
+            )
+        }
 
         Spacer(Modifier.height(24.dp))
         if (running) {

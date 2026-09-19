@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 — 2026-09-19
+
+### Fixed
+- Overlay no longer blends with the unflipped app underneath (the “double image” / ghosting). Window stays fully opaque; brightness fades to black, not to the original player.
+
+### Changed
+- Accessibility is recommended so tap-through still works on a fully opaque overlay (Android 12+ untrusted-touch rules).
+
 ## 0.1.0 — 2026-09-19
 
 First public sideload build. Not listed on Google Play, RuStore, or F-Droid yet.
