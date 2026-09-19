@@ -1,0 +1,5 @@
+Mirra mirrors a single Android app with horizontal/vertical flip and 180° rotation for HUD and windscreen use.
+
+Unlike classic overlay mirrors, the picture does not steal taps: player and map controls keep working. A floating button over other windows hides or shows the overlay instantly.
+
+Requires Android 14 QPR2+. Sideload version 0.1.0 — not listed on stores yet.

@@ -1,0 +1,4 @@
+-keep class dev.dag0n.mirra.mirror.MirrorService { *; }
+-keep class dev.dag0n.mirra.a11y.MirraAccessibilityService { *; }
+-keepclassmembers class * extends android.app.Service { *; }
+-dontwarn javax.annotation.**
