@@ -16,6 +16,7 @@
     <string name="start_hint">In the system sheet choose a single app (not Entire screen), then open the player. Use the floating button to hide or show the mirrored overlay.</string>
     <string name="need_overlay">Allow Mirra to display over other apps first.</string>
     <string name="error_projection">Could not start screen capture.</string>
+    <string name="error_overlay">Could not create the mirror overlay.</string>
     <string name="error_projection_denied">Screen capture was cancelled.</string>
     <string name="status_delay">Starting in %1$d s…</string>
     <string name="status_overlay_on">Overlay shown — taps go through to the app.</string>

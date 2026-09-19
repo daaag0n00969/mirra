@@ -39,7 +39,6 @@ class OverlayController(
         if (root != null) return
         val tv = TextureView(hostContext).apply {
             isOpaque = true
-            setBackgroundColor(Color.BLACK)
             surfaceTextureListener = object : TextureView.SurfaceTextureListener {
                 override fun onSurfaceTextureAvailable(st: SurfaceTexture, width: Int, height: Int) {
                     capture.bindSurface(Surface(st), width.coerceAtLeast(1), height.coerceAtLeast(1))
@@ -75,7 +74,12 @@ class OverlayController(
         root = frame
         val params = buildParams(settingsStore.current())
         layoutParams = params
-        windowManager.addView(frame, params)
+        try {
+            windowManager.addView(frame, params)
+        } catch (t: Throwable) {
+            params.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+            windowManager.addView(frame, params)
+        }
         visible = true
         applySettings(settingsStore.current())
         MirrorState.setOverlayVisible(true)

@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-2ee6d6.svg)](LICENSE)
 [![API](https://img.shields.io/badge/Android-14%2B-blue)](#requirements)
 
-> Version **0.1.1** is a sideload preview. It is **not** published on Google Play, RuStore, or F-Droid yet.
+> Version **0.1.2** is a sideload preview. It is **not** published on Google Play, RuStore, or F-Droid yet.
 
 [Русский README](README.ru.md) · [Releases / APK](https://github.com/daaag0n00969/mirra/releases)
 
@@ -47,7 +47,7 @@ Independent original project (MIT). Inspired by the HUD-mirror idea; **not a for
 
 ## Install
 
-1. Download `Mirra-0.1.1.apk` from [Releases](https://github.com/daaag0n00969/mirra/releases).
+1. Download `Mirra-0.1.2.apk` from [Releases](https://github.com/daaag0n00969/mirra/releases).
 2. Allow install from your browser / Files.
 3. Open Mirra → grant **Display over other apps**.
 4. Tap **Start mirror** → choose **a single app** → open that app.

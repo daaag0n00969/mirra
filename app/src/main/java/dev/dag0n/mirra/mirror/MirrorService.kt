@@ -119,17 +119,26 @@ class MirrorService : Service() {
 
     private fun showWindows() {
         if (overlay != null) return
-        overlay = OverlayController(
-            serviceContext = this,
-            settingsStore = settingsStore,
-            capture = capture,
-            cropTop = cropTop,
-            cropBottom = cropBottom,
-            cropLeft = cropLeft,
-            cropRight = cropRight,
-        ).also { it.attach() }
-        if (settingsStore.current().showBubble) attachBubble()
-        refreshNotification(true)
+        try {
+            overlay = OverlayController(
+                serviceContext = this,
+                settingsStore = settingsStore,
+                capture = capture,
+                cropTop = cropTop,
+                cropBottom = cropBottom,
+                cropLeft = cropLeft,
+                cropRight = cropRight,
+            ).also { it.attach() }
+            if (settingsStore.current().showBubble) attachBubble()
+            refreshNotification(true)
+        } catch (t: Throwable) {
+            overlay?.detach()
+            overlay = null
+            bubble?.detach()
+            bubble = null
+            Toast.makeText(this, R.string.error_overlay, Toast.LENGTH_LONG).show()
+            stopSelf()
+        }
     }
 
     private fun attachBubble() {

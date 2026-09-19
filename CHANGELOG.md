@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-09-19
+
+### Fixed
+- Crash on start: `TextureView doesn't support displaying a background drawable`. Overlay failed to appear even with all permissions granted.
+
 ## 0.1.1 — 2026-09-19
 
 ### Fixed

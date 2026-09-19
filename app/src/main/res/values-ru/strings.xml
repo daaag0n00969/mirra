@@ -16,6 +16,7 @@
     <string name="start_hint">В системном окне выберите одно приложение (не весь экран), затем откройте плеер. Плавающей кнопкой скрывайте и возвращайте отзеркаленную картинку.</string>
     <string name="need_overlay">Сначала разрешите показ поверх других окон.</string>
     <string name="error_projection">Не удалось начать захват экрана.</string>
+    <string name="error_overlay">Не удалось создать оверлей зеркала.</string>
     <string name="error_projection_denied">Захват экрана отменён.</string>
     <string name="status_delay">Старт через %1$d с…</string>
     <string name="status_overlay_on">Оверлей включён — нажатия проходят в приложение.</string>
